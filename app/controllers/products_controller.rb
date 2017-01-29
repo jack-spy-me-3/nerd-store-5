@@ -1,6 +1,18 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.all
+    sort_attribute = params[:sort_attribute]
+    sort_order = params[:sort_order] || "asc"
+    discount_price = params[:discount]
+    search_result = params[:search_result]
+    if sort_attribute
+      @products = Product.order(sort_attribute => sort_order)
+    elsif discount_price
+      @products = Product.where("price < ?", discount_price)
+    elsif search_result
+      @products = Product.where("name ILIKE ?", "%#{search_result}%")
+    else
+      @products = Product.all
+    end
   end
 
   def new
@@ -19,7 +31,11 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find_by(id: params[:id])
+    if params[:id] == "random"
+      @product = Product.all.sample
+    else
+      @product = Product.find_by(id: params[:id])
+    end
   end
 
   def edit
@@ -46,5 +62,11 @@ class ProductsController < ApplicationController
     flash[:warning] = "Product Created"
     redirect_to "/"
   end
+
+  # def search
+  #   search_result = params[:search_result]
+  #   @products = Product.where("name LIKE ?", "%#{search_result}%")
+  #   render "index.html.erb"
+  # end
 end
 
