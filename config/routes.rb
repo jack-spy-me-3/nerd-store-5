@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # products routes
   get '/' => 'products#index'
   get '/products' => 'products#index'
   get '/products/new' => 'products#new'
@@ -8,5 +9,18 @@ Rails.application.routes.draw do
   patch '/products/:id' => 'products#update'
   delete '/products/:id' => 'products#delete'
 
-  post '/search_results' => 'products#search'
+  # suppliers routes
+  get '/' => 'suppliers#index'
+  get '/suppliers' => 'suppliers#index'
+  get '/suppliers/new' => 'suppliers#new'
+  post '/suppliers' => 'suppliers#create'
+  get '/suppliers/:id' => 'suppliers#show'
+  get '/suppliers/:id/edit' => 'suppliers#edit'
+  patch '/suppliers/:id' => 'suppliers#update'
+  delete '/suppliers/:id' => 'suppliers#delete'
+
+  # images routes
+  get "/products/:product_id/images/new", to: 'images#new'
+  post "/products/:product_id/images", to: 'images#create'
+
 end
