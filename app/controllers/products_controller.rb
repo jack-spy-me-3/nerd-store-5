@@ -13,6 +13,13 @@ class ProductsController < ApplicationController
     else
       @products = Product.all
     end
+    if session[:count] == nil
+      session[:count] = 1
+    else
+      session[:count] += 1
+    end
+    @visit_count = session[:count]
+
   end
 
   def new
