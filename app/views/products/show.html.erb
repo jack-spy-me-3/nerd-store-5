@@ -14,6 +14,13 @@
             <p>Description: <%= @product.description %></p>
             <%= link_to "Edit", "/products/#{@product.id}/edit", class: "btn btn-success" %>
             <%= link_to "Delete", "/products/#{@product.id}", {method: :delete, class: "btn btn-danger" }%>
+            <% if current_user %>
+              <%= form_tag "/orders", method: :post do %>
+                <div>Quantity: <input type="text" name="quantity"></div>
+                <div><input type="hidden" name="product_id" value="<%= @product.id %>"></div>
+                <input type="submit" value="Buy Now!">
+              <% end %>
+            <% end %>
         </div>
       </div>
     </div>
