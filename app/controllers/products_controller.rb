@@ -10,6 +10,9 @@ class ProductsController < ApplicationController
       @products = Product.where("price < ?", discount_price)
     elsif search_result
       @products = Product.where("name ILIKE ?", "%#{search_result}%")
+    elsif params[:category]
+      selected_category = Category.find_by(name: params[:category])
+      @products = selected_category.products
     else
       @products = Product.all
     end
