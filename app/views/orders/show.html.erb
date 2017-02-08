@@ -1,9 +1,11 @@
 <h1>Order ID: <%= @order.id %></h1>
-<h2>Quantity: <%= @order.quantity %></h2>
-<h2>Subtotal: <%= @order.subtotal %></h2>
-<h2>Tax: <%= @order.tax %></h2>
-<h2>Total: <%= @order.total %></h2>
+<% @order.carted_products.each do |carted_product| %>
+  <h2>Product Name: <%= carted_product.product.name %></h2>
+  <img src="<%= carted_product.product.images.first.url %>">
+  <h2>Quantity: <%= carted_product.quantity %></h2>
+<% end %>
+<h2>Subtotal: <%= number_to_currency(@order.subtotal) %></h2>
+<h2>Tax: <%= number_to_currency(@order.tax) %></h2>
+<h2>Total: <%= number_to_currency(@order.total) %></h2>
 <h2>Orderer's Email: <%= @order.user.email %></h2>
-<h2>Product: <%= @order.product.name %></h2>
-<img src="<%= @order.product.images.first.url %>">
 <h2>Created At: <%= @order.created_at.strftime("%A, %d %b %Y %l:%M %p") %></h2>

@@ -1,11 +1,16 @@
 class OrdersController < ApplicationController
   def create
-    product = Product.find_by(id: params[:product_id])
-    order = Order.new(quantity: params[:quantity],
-                      user_id: current_user.id,
-                      product_id: params[:product_id])
-    order.calculate_absolute_total
+    carted_products = current_user.carted_products.where(status: "carted")
+    order = Order.new(user_id: current_user.id)
+    order.calculate_absolute_total(carted_products)
     order.save
+    # carted_products.each do |carted|
+    #   # carted.status = "purchased"
+    #   # carted.order_id = order.id
+    #   carted.update(status: "purchased", order_id: order.id)
+    #   # carted.save
+    # end
+    carted_products.update_all(status: "purchased", order_id: order.id)
     redirect_to "/orders/#{order.id}"
   end
 

@@ -22,7 +22,7 @@ class ProductsController < ApplicationController
       session[:count] += 1
     end
     @visit_count = session[:count]
-
+    render "index.html.erb"
   end
 
   def new

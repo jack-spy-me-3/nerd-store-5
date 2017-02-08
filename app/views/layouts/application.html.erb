@@ -44,6 +44,8 @@
             <% end %>
             <li class="divider"></li>
             <% if current_user %>
+              <li><a href="/carted_products">Shopping Cart (<%= @cart_count %>)</a></li>
+            <li class="divider"></li>
               <li><a href="/logout">Logout</a></li>
             <% else %>
               <li><a href="/signup">Sign Up</a></li>
