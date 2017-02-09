@@ -7,9 +7,21 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
-  private
+  def authenticate_user!
+    redirect_to "/login" unless current_user
+  end
   
+  def authenticate_admin!
+    redirect_to "/login" unless current_user && current_user.admin?
+  end
+
+  private
+
   def cart_count
-    @cart_count = current_user.carted_products.where(status: "carted").count
+    if current_user
+      @cart_count = current_user.carted_products.where(status: "carted").count
+    else
+      @cart_count = 0
+    end
   end
 end

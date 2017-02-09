@@ -6,6 +6,11 @@ class Product < ApplicationRecord
   has_many :carted_products
   has_many :orders, through: :carted_products
 
+  validates :name, :price, presence: true
+  validates :name, uniqueness: true
+  validates :description, presence: true, length: { maximum: 500 }
+  validates :price, :format => { :with => /\A\d+(?:\.\d{0,2})?\z/ }, :numericality => {:greater_than => 0, message: "must be a price"}
+
   def sale_message
     message = "Discount item!!!" if price.to_i <= 5
     message = "Every day value!!" if price.to_i > 5

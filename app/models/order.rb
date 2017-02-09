@@ -12,11 +12,11 @@ class Order < ApplicationRecord
   end
 
   def calculate_total
-    self.total = subtotal + tax
+    self.total = self.subtotal + self.tax
   end
 
   def calculate_tax
-    self.tax = subtotal * 0.09
+    self.tax = self.subtotal * 0.09
   end
 
   def calculate_absolute_total(input_carted_products)

@@ -9,9 +9,13 @@ class CartedProductsController < ApplicationController
   end
 
   def index
-    @carted_products = current_user.carted_products.where(status: "carted")
-    if @carted_products.any?
-      render "index.html.erb"
+    if current_user
+      @carted_products = current_user.carted_products.where(status: "carted")
+      if @carted_products.any?
+        render "index.html.erb"
+      else
+        redirect_to "/"
+      end
     else
       redirect_to "/"
     end
