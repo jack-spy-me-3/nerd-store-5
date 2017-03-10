@@ -17,29 +17,7 @@ Product.create!([
   {name: "Sonic Screwdriver", price: "7.0", description: "The Doctor's sciencey magic wand to get out of tight spots. Note: does not work on wood", stock: true, supplier_id: 1},
   {name: "Lightsaber", price: "300.0", description: "Part laser, part samuri sword, all awesome. The lightsaber is an elogant weapon for a more civilized age, not nearly as clumsy as a blaster", stock: true, supplier_id: 2},
   {name: "Decoder Ring", price: "100.0", description: "fkdsh skljf lskdfh ksdlfh sdkf hsdkfjh sdfk hsdkfh ", stock: true, supplier_id: 1},
-  {name: "Decoder Ring 2", price: "1.0", description: "Now even cheaper!", stock: true, supplier_id: 4}
-])
-Order.create!([
-  {user_id: 1, subtotal: "270.0", tax: "24.3", total: "294.3"},
-  {user_id: 1, subtotal: "10.0", tax: "0.9", total: "10.9"},
-  {user_id: 1, subtotal: "18.0", tax: "1.62", total: "19.62"},
-  {user_id: 1, subtotal: "9.0", tax: "0.81", total: "9.81"},
-  {user_id: 1, subtotal: "2700.0", tax: "243.0", total: "2943.0"},
-  {user_id: 1, subtotal: "100.0", tax: "9.0", total: "109.0"},
-  {user_id: 1, subtotal: "100.0", tax: "9.0", total: "109.0"},
-  {user_id: 2, subtotal: "519.0", tax: "46.71", total: "565.71"},
-  {user_id: 2, subtotal: "13.0", tax: "1.17", total: "14.17"},
-  {user_id: 1, subtotal: nil, tax: nil, total: nil}
-])
-CartedProduct.create!([
-  {user_id: 2, product_id: 1, quantity: 1, status: "purchased", order_id: 8},
-  {user_id: 2, product_id: 4, quantity: 3, status: "purchased", order_id: 8},
-  {user_id: 2, product_id: 2, quantity: 1000, status: "removed", order_id: nil},
-  {user_id: 2, product_id: 3, quantity: 10, status: "removed", order_id: nil},
-  {user_id: 2, product_id: 3, quantity: 2, status: "purchased", order_id: 9},
-  {user_id: 2, product_id: 1, quantity: 1, status: "purchased", order_id: 9},
-  {user_id: 2, product_id: 3, quantity: 1, status: "carted", order_id: nil},
-  {user_id: 2, product_id: 1, quantity: 1, status: "carted", order_id: nil}
+  {name: "Decoder Ring 2", price: "1.0", description: "Now even cheaper!", stock: true, supplier_id: 3}
 ])
 Category.create!([
   {name: "weapon"},
@@ -65,15 +43,3 @@ Image.create!([
   {url: "http://passwordsecuritytips.com/wp-content/uploads/2014/11/decoder.jpg", product_id: 13},
   {url: "http://passwordsecuritytips.com/wp-content/uploads/2014/11/decoder.jpg", product_id: 14}
 ])
-
-
-ProductCategory.create!([
-  {product_id: 1, category_id: 2},
-  {product_id: 1, category_id: 1},
-  {product_id: 1, category_id: 4},
-  {product_id: 2, category_id: 1},
-  {product_id: 4, category_id: 1},
-  {product_id: 7, category_id: 3},
-  {product_id: 7, category_id: 5}
-])
-
