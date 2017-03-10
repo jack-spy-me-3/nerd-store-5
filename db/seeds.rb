@@ -1,3 +1,31 @@
+User.create!([
+  {name: "Sami", email: "sami@actualize.co", password: "password", password_confirmation: "password", admin: false},
+  {name: "Bob", email: "bob@gmail.com", password: "password", password_confirmation: "password", admin: true},
+  {name: nil, email: "dkfshdfkdsjhfskldjfhsdlkjfhsdlkf", password: "password", password_confirmation: "password", admin: false},
+  {name: nil, email: "blahblah@gmail.com", password: "password", password_confirmation: "password", admin: false}
+])
+Product.create!([
+  {name: "Hitchhiker's Guide to the Galexy", price: "42.0", description: "In many of the more relaxed civilizations on the Outer Eastern Rim of the Galaxy, the Hitch-Hiker's Guide has already supplanted the great Encyclopaedia Galactica as the standard repository of all knowledge and wisdom, for though it has many omissions and contains much that is apocryphal, or at least wildly inaccurate, it scores over the older, more pedestrian work in two important respects. First, it is slightly cheaper; and secondly it has the words DON'T PANIC inscribed in large friendly letters on its cover.", stock: true, supplier_id: 1},
+  {name: "DnD Dice set", price: "57.0", description: "Take down mighty dragons with this timeless set of 20 sided wonders", stock: true, supplier_id: 1},
+  {name: "Space Cowboy Laser Gun", price: "170.0", description: "This weapon has no other description than, Shiney!", stock: true, supplier_id: 1},
+  {name: "WNYX Mug", price: "200.0", description: "Get your morning news once you wake up with a cup of joe from... well Joe. He made it with his homemade duct tape", stock: true, supplier_id: 2},
+  {name: "Sonic Screwdriver", price: "7.0", description: "The Doctor's sciencey magic wand to get out of tight spots. Note: does not work on wood", stock: true, supplier_id: 1},
+  {name: "Lightsaber", price: "300.0", description: "Part laser, part samuri sword, all awesome. The lightsaber is an elogant weapon for a more civilized age, not nearly as clumsy as a blaster", stock: true, supplier_id: 2},
+  {name: "Decoder Ring", price: "100.0", description: "fkdsh skljf lskdfh ksdlfh sdkf hsdkfjh sdfk hsdkfh ", stock: true, supplier_id: 1},
+  {name: "Decoder Ring 2", price: "1.0", description: "Now even cheaper!", stock: true, supplier_id: 4}
+])
+Order.create!([
+  {user_id: 1, subtotal: "270.0", tax: "24.3", total: "294.3"},
+  {user_id: 1, subtotal: "10.0", tax: "0.9", total: "10.9"},
+  {user_id: 1, subtotal: "18.0", tax: "1.62", total: "19.62"},
+  {user_id: 1, subtotal: "9.0", tax: "0.81", total: "9.81"},
+  {user_id: 1, subtotal: "2700.0", tax: "243.0", total: "2943.0"},
+  {user_id: 1, subtotal: "100.0", tax: "9.0", total: "109.0"},
+  {user_id: 1, subtotal: "100.0", tax: "9.0", total: "109.0"},
+  {user_id: 2, subtotal: "519.0", tax: "46.71", total: "565.71"},
+  {user_id: 2, subtotal: "13.0", tax: "1.17", total: "14.17"},
+  {user_id: 1, subtotal: nil, tax: nil, total: nil}
+])
 CartedProduct.create!([
   {user_id: 2, product_id: 1, quantity: 1, status: "purchased", order_id: 8},
   {user_id: 2, product_id: 4, quantity: 3, status: "purchased", order_id: 8},
@@ -32,28 +60,8 @@ Image.create!([
   {url: "http://passwordsecuritytips.com/wp-content/uploads/2014/11/decoder.jpg", product_id: 13},
   {url: "http://passwordsecuritytips.com/wp-content/uploads/2014/11/decoder.jpg", product_id: 14}
 ])
-Order.create!([
-  {user_id: 1, subtotal: "270.0", tax: "24.3", total: "294.3"},
-  {user_id: 1, subtotal: "10.0", tax: "0.9", total: "10.9"},
-  {user_id: 1, subtotal: "18.0", tax: "1.62", total: "19.62"},
-  {user_id: 1, subtotal: "9.0", tax: "0.81", total: "9.81"},
-  {user_id: 1, subtotal: "2700.0", tax: "243.0", total: "2943.0"},
-  {user_id: 1, subtotal: "100.0", tax: "9.0", total: "109.0"},
-  {user_id: 1, subtotal: "100.0", tax: "9.0", total: "109.0"},
-  {user_id: 2, subtotal: "519.0", tax: "46.71", total: "565.71"},
-  {user_id: 2, subtotal: "13.0", tax: "1.17", total: "14.17"},
-  {user_id: 1, subtotal: nil, tax: nil, total: nil}
-])
-Product.create!([
-  {name: "Hitchhiker's Guide to the Galexy", price: "42.0", description: "In many of the more relaxed civilizations on the Outer Eastern Rim of the Galaxy, the Hitch-Hiker's Guide has already supplanted the great Encyclopaedia Galactica as the standard repository of all knowledge and wisdom, for though it has many omissions and contains much that is apocryphal, or at least wildly inaccurate, it scores over the older, more pedestrian work in two important respects. First, it is slightly cheaper; and secondly it has the words DON'T PANIC inscribed in large friendly letters on its cover.", stock: true, supplier_id: 1},
-  {name: "DnD Dice set", price: "57.0", description: "Take down mighty dragons with this timeless set of 20 sided wonders", stock: true, supplier_id: 1},
-  {name: "Space Cowboy Laser Gun", price: "170.0", description: "This weapon has no other description than, Shiney!", stock: true, supplier_id: 1},
-  {name: "WNYX Mug", price: "200.0", description: "Get your morning news once you wake up with a cup of joe from... well Joe. He made it with his homemade duct tape", stock: true, supplier_id: 2},
-  {name: "Sonic Screwdriver", price: "7.0", description: "The Doctor's sciencey magic wand to get out of tight spots. Note: does not work on wood", stock: true, supplier_id: 1},
-  {name: "Lightsaber", price: "300.0", description: "Part laser, part samuri sword, all awesome. The lightsaber is an elogant weapon for a more civilized age, not nearly as clumsy as a blaster", stock: true, supplier_id: 2},
-  {name: "Decoder Ring", price: "100.0", description: "fkdsh skljf lskdfh ksdlfh sdkf hsdkfjh sdfk hsdkfh ", stock: true, supplier_id: 1},
-  {name: "Decoder Ring 2", price: "1.0", description: "Now even cheaper!", stock: true, supplier_id: 4}
-])
+
+
 ProductCategory.create!([
   {product_id: 1, category_id: 2},
   {product_id: 1, category_id: 1},
@@ -67,10 +75,4 @@ Supplier.create!([
   {name: "Think Geek", email: "think@geek.com", phone: "123-132-1234"},
   {name: "Amazon", email: "ama@zon.com", phone: "555-555-5555"},
   {name: "Hot Topic", email: "hot@topic.com", phone: "123-123-1234"}
-])
-User.create!([
-  {name: "Sami", email: "sami@actualize.co", password: "password", password_confirmation: "password", admin: false},
-  {name: "Bob", email: "bob@gmail.com", password: "password", password_confirmation: "password", admin: true},
-  {name: nil, email: "dkfshdfkdsjhfskldjfhsdlkjfhsdlkf", password: "password", password_confirmation: "password", admin: false},
-  {name: nil, email: "blahblah@gmail.com", password: "password", password_confirmation: "password", admin: false}
 ])
